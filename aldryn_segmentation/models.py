@@ -6,7 +6,8 @@ from django.db import models
 from django.utils import six
 from django.utils.encoding import python_2_unicode_compatible, force_text
 from django.utils.functional import lazy
-from django.utils.translation import ugettext_lazy as _, string_concat
+from django.utils.text import format_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
@@ -46,7 +47,7 @@ class SegmentLimitPluginModel(CMSPlugin):
         elif self.max_children == 1:
             return _('Show First')
         else:
-            return string_concat(_('Show First'), ' ', self.max_children)
+            return format_lazy('{}{}{}', _('Show First'), ' ', self.max_children)
 
 
     def __str__(self):
@@ -68,7 +69,7 @@ class SegmentLimitPluginModel(CMSPlugin):
 
 @python_2_unicode_compatible
 class SegmentBasePluginModel(CMSPlugin):
-    
+
     #
     # Defines a common interface for segment plugins. Also note that plugin
     # model's subclassing this class will automatically be (un-)registered
