@@ -50,7 +50,7 @@ class SegmentPluginBase(CMSPluginBase):
         from ..segment_pool import segment_pool, SegmentOverride
 
         request = context['request']
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             return segment_pool.get_override_for_segment(
                 request.user, self, instance
             )
