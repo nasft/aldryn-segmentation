@@ -74,7 +74,7 @@ class AuthenticatedSegmentPlugin(SegmentPluginBase):
 
     def is_context_appropriate(self, context, instance):
         request = context.get('request')
-        return request and request.user and request.user.is_authenticated()
+        return request and request.user and request.user.is_authenticated
 
 
 plugin_pool.register_plugin(AuthenticatedSegmentPlugin)
